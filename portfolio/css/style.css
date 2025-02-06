@@ -1,0 +1,171 @@
+/* Réinitialisation des marges, paddings et box-sizing */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* Variables de couleurs pour une thématique sombre avec des touches de bleu */
+  :root {
+    --bg-color: #121212;           /* Fond général très sombre */
+    --text-color: #e0e0e0;         /* Texte en couleur claire */
+    --accent-color: #1e90ff;       /* Bleu pour les titres et liens actifs */
+    --secondary-bg: #1e1e1e;       /* Fond secondaire pour les sections et le header/footer */
+    --header-bg: #1a1a1a;          /* Fond du header et footer */
+    --link-hover-color: #63b3ed;   /* Bleu plus clair au survol */
+    --transition-speed: 0.3s;
+  }
+  
+  /* Style global du body */
+  body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+  
+  /* Header et Navigation */
+  header {
+    background-color: var(--header-bg);
+    padding: 20px;
+    position: sticky;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+    transition: background 0.3s ease;
+  }
+  
+  nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+  }
+  
+  nav ul li {
+    margin: 0 15px;
+  }
+  
+  nav ul li a {
+    color: var(--text-color);
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: bold;
+    transition: color var(--transition-speed);
+    padding: 10px 15px;
+  }
+  
+  nav ul li a:hover,
+  nav ul li a.active {
+    color: var(--link-hover-color);
+    border-bottom: 2px solid var(--link-hover-color);
+  }
+  
+  /* Styles des sections */
+  section {
+    padding: 60px 20px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  
+  /* Titres */
+  h1, h2 {
+    color: var(--accent-color);
+    margin-bottom: 20px;
+  }
+  
+  /* Conteneur des projets */
+  .project-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  /* Projet - panneau coulissant */
+  .project-item {
+    background: var(--secondary-bg);
+    padding: 20px;
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
+    transition: all var(--transition-speed);
+  }
+  
+  .project-item h2 {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 1.2rem;
+  }
+  
+  .project-item h2::after {
+    content: "▼";
+    font-size: 1.2rem;
+    transition: transform var(--transition-speed);
+  }
+  
+  .project-item.open h2::after {
+    transform: rotate(180deg);
+  }
+  
+  .project-item .content {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: max-height var(--transition-speed), opacity var(--transition-speed);
+  }
+  
+  .project-item.open .content {
+    max-height: 500px;
+    opacity: 1;
+    padding-top: 10px;
+  }
+  
+  /* Boutons et interactions */
+  .btn {
+    display: inline-block;
+    padding: 10px 15px;
+    background-color: var(--accent-color);
+    color: var(--text-color);
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color var(--transition-speed);
+  }
+  
+  .btn:hover {
+    background-color: var(--link-hover-color);
+  }
+  
+  /* Images responsives */
+  img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+  }
+  
+  /* Animation pour faire apparaître les sections en fondu */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.8s forwards;
+  }
+  
+  @keyframes fadeInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Footer */
+  footer {
+    background-color: var(--header-bg);
+    text-align: center;
+    padding: 15px;
+    margin-top: 40px;
+    font-size: 0.9rem;
+  }
+  
