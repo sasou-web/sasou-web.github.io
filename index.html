@@ -4,50 +4,72 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Samir Moghrabi - Portfolio</title>
-  
-  <!-- Open Graph Metadata (Embed Discord) -->
+
+  <!-- Open Graph Metadata -->
   <meta property="og:title" content="Samir Moghrabi - Portfolio" />
   <meta property="og:description" content="Découvrez mes projets en développement web, VBA, gestion de projet et plus encore." />
   <meta property="og:image" content="https://moghrabi.fr/images/preview.png" />
   <meta property="og:url" content="https://moghrabi.fr/" />
   <meta property="og:type" content="website" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Samir Moghrabi - Portfolio" />
-  <meta name="twitter:description" content="Explorez mon parcours, mes projets et mes compétences." />
-  <meta name="twitter:image" content="https://moghrabi.fr/images/preview.png" />
 
+  <!-- Google Fonts (Inter) -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Fichier CSS -->
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-
-  <section id="header">
-    <header>
+  <!-- Wrapper principal pour Grid -->
+  <div class="grid-container">
+    <!-- Header avec navigation -->
+    <header id="header">
       <nav>
         <ul>
-          <li><a href="index.html" class="active">Présentation</a></li>
-          <li><a href="projets.html">Projets</a></li>
+          <li><a href="#" data-section="presentation" class="active">Présentation</a></li>
+          <li><a href="#" data-section="about">À propos</a></li>
+          <li><a href="#" data-section="projects">Projets</a></li>
         </ul>
       </nav>
     </header>
-  </section>
 
-  <section id="presentation" class="fade-in">
-    <h1>Bienvenue sur mon portfolio</h1>
-    <p>Bonjour, je m'appelle <strong>Samir Moghrabi</strong>. Actuellement en 3ᵉ année d’alternance en <strong>management et conseil en SI</strong>, je développe mes compétences en gestion de projet tout en explorant mes passions.</p>
-  </section>
+    <!-- Contenu principal -->
+    <main>
+      <!-- Présentation -->
+      <section id="presentation" class="page active">
+        <h1>Bienvenue sur mon portfolio</h1>
+        <p>Bonjour, je m'appelle <strong>Samir Moghrabi</strong>. Actuellement en 3ᵉ année d’alternance en <strong>management et conseil en SI</strong>, je développe mes compétences en gestion de projet tout en explorant mes passions.</p>
+      </section>
 
-  <section id="about" class="fade-in">
-    <h2>À propos de moi</h2>
-    <p>Je suis une personne curieuse et passionnée par le <strong>numérique</strong>. Mon parcours en alternance m'a permis d'acquérir une solide expérience en gestion de projet, mais j’ai aussi un fort intérêt pour le <strong>développement web et les nouvelles technologies</strong>.</p>
-    <p>En dehors du travail, je consacre beaucoup de temps à mes passions : les <strong>jeux vidéo</strong>, notamment les jeux compétitifs comme <em>Rainbow Six</em> et <em>Valorant</em>, les <strong>animes</strong> et le <strong>cinéma</strong>. J'aime découvrir de nouvelles œuvres et partager mes découvertes avec mes amis.</p>
-  </section>
+      <!-- À propos -->
+      <section id="about" class="page">
+        <h2>À propos de moi</h2>
+        <p>Je suis une personne curieuse et passionnée par le <strong>numérique</strong>. Mon parcours en alternance m'a permis d'acquérir une solide expérience en gestion de projet, mais j’ai aussi un fort intérêt pour le <strong>développement web et les nouvelles technologies</strong>.</p>
+        <p>En dehors du travail, je consacre beaucoup de temps à mes passions : les <strong>jeux vidéo</strong>, les <strong>animes</strong>, et le <strong>cinéma</strong>.</p>
+      </section>
 
-  <section id="footer">
+      <!-- Projets -->
+      <section id="projects" class="page">
+        <h2>Mes Projets</h2>
+        <div class="project-list">
+          <article class="project-item">
+            <h3>Automatisation de tâches en VBA</h3>
+            <p>Développement d’algorithmes en VBA pour automatiser certaines tâches et optimiser la gestion des données.</p>
+          </article>
+          <article class="project-item">
+            <h3>Développement Web</h3>
+            <p>Création de sites dynamiques et interactifs avec HTML, CSS, JavaScript et PHP.</p>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
     <footer>
       <p>&copy; 2025 Samir Moghrabi. Tous droits réservés.</p>
     </footer>
-  </section>
+  </div>
 
+  <!-- Fichier JavaScript -->
   <script src="js/main.js"></script>
 </body>
 </html>

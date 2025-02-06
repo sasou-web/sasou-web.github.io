@@ -1,171 +1,203 @@
-/* Réinitialisation des marges, paddings et box-sizing */
+/* Réinitialisation */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-  }
-  
-  /* Variables de couleurs pour une thématique sombre avec des touches de bleu */
-  :root {
-    --bg-color: #121212;           /* Fond général très sombre */
-    --text-color: #e0e0e0;         /* Texte en couleur claire */
-    --accent-color: #1e90ff;       /* Bleu pour les titres et liens actifs */
-    --secondary-bg: #1e1e1e;       /* Fond secondaire pour les sections et le header/footer */
-    --header-bg: #1a1a1a;          /* Fond du header et footer */
-    --link-hover-color: #63b3ed;   /* Bleu plus clair au survol */
-    --transition-speed: 0.3s;
-  }
-  
-  /* Style global du body */
-  body {
-    background-color: var(--bg-color);
+    scroll-behavior: smooth;
+}
+
+/* Variables de couleurs */
+:root {
+    --bg-color: #1d161d;
+    --header-bg: #392951;
+    --text-color: #d6b8ce;
+    --accent-color: #a55977;
+    --link-hover-color: #533356;
+    --card-bg: #533356;
+    --gradient-color: linear-gradient(90deg, #a55977, #7d5380);
+    --footer-bg: #1d161d;
+}
+
+/* Style global */
+body {
+    font-family: 'Inter', Arial, sans-serif;
+    background: var(--bg-color);
     color: var(--text-color);
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    line-height: 1.6;
+    line-height: 1.8;
     min-height: 100vh;
-  }
-  
-  /* Header et Navigation */
-  header {
-    background-color: var(--header-bg);
-    padding: 20px;
-    position: sticky;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Grid Container */
+.grid-container {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    min-height: 100vh;
+}
+
+/* Contenu principal */
+main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Header */
+header {
+    position: fixed;
     top: 0;
     width: 100%;
+    background: var(--header-bg);
+    padding: 15px 0;
     z-index: 1000;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
-    transition: background 0.3s ease;
-  }
-  
-  nav ul {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+}
+
+nav ul {
     list-style: none;
     display: flex;
     justify-content: center;
-  }
-  
-  nav ul li {
-    margin: 0 15px;
-  }
-  
-  nav ul li a {
+    gap: 30px;
+    padding: 0;
+}
+
+nav ul li a {
     color: var(--text-color);
     text-decoration: none;
-    font-size: 1.1rem;
     font-weight: bold;
-    transition: color var(--transition-speed);
+    font-size: 1.1rem;
     padding: 10px 15px;
-  }
-  
-  nav ul li a:hover,
-  nav ul li a.active {
-    color: var(--link-hover-color);
-    border-bottom: 2px solid var(--link-hover-color);
-  }
-  
-  /* Styles des sections */
-  section {
-    padding: 60px 20px;
+    border-radius: 8px;
+    transition: all 0.3s ease-in-out;
+}
+
+nav ul li a:hover,
+nav ul li a.active {
+    color: white;
+    background: var(--link-hover-color);
+    box-shadow: 0 4px 10px rgba(125, 83, 128, 0.4);
+}
+
+/* Sections */
+section {
+    padding: 120px 20px 80px;
     max-width: 900px;
     margin: 0 auto;
-  }
-  
-  /* Titres */
-  h1, h2 {
+    display: none;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    background: var(--card-bg);
+    animation: fadeInUp 0.8s ease-out both;
+}
+
+section.active {
+    display: block;
+}
+
+/* Titres */
+h1, h2 {
+    font-size: 2.5rem;
     color: var(--accent-color);
-    margin-bottom: 20px;
-  }
-  
-  /* Conteneur des projets */
-  .project-list {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-  }
-  
-  /* Projet - panneau coulissant */
-  .project-item {
-    background: var(--secondary-bg);
-    padding: 20px;
-    border-radius: 8px;
-    overflow: hidden;
-    position: relative;
-    transition: all var(--transition-speed);
-  }
-  
-  .project-item h2 {
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    font-size: 1.2rem;
-  }
-  
-  .project-item h2::after {
-    content: "▼";
-    font-size: 1.2rem;
-    transition: transform var(--transition-speed);
-  }
-  
-  .project-item.open h2::after {
-    transform: rotate(180deg);
-  }
-  
-  .project-item .content {
-    max-height: 0;
-    overflow: hidden;
-    opacity: 0;
-    transition: max-height var(--transition-speed), opacity var(--transition-speed);
-  }
-  
-  .project-item.open .content {
-    max-height: 500px;
-    opacity: 1;
-    padding-top: 10px;
-  }
-  
-  /* Boutons et interactions */
-  .btn {
-    display: inline-block;
-    padding: 10px 15px;
-    background-color: var(--accent-color);
-    color: var(--text-color);
-    border-radius: 5px;
-    text-decoration: none;
-    font-weight: bold;
-    transition: background-color var(--transition-speed);
-  }
-  
-  .btn:hover {
-    background-color: var(--link-hover-color);
-  }
-  
-  /* Images responsives */
-  img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 5px;
-  }
-  
-  /* Animation pour faire apparaître les sections en fondu */
-  .fade-in {
-    opacity: 0;
-    transform: translateY(20px);
-    animation: fadeInUp 0.8s forwards;
-  }
-  
-  @keyframes fadeInUp {
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-  
-  /* Footer */
-  footer {
-    background-color: var(--header-bg);
     text-align: center;
-    padding: 15px;
-    margin-top: 40px;
-    font-size: 0.9rem;
-  }
-  
+    margin-bottom: 20px;
+}
+
+h1 {
+    font-size: 3rem;
+}
+
+h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: var(--link-hover-color);
+}
+
+/* Texte */
+p {
+    font-size: 1.1rem;
+    text-align: center;
+    margin: 10px 0;
+}
+
+/* Projets */
+.project-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.project-item {
+    background: var(--gradient-color);
+    color: var(--text-color);
+    border-radius: 15px;
+    padding: 20px;
+    text-align: left;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 15px rgba(165, 89, 119, 0.3);
+}
+
+.project-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(165, 89, 119, 0.5);
+}
+
+/* Footer */
+footer {
+    background: var(--footer-bg);
+    padding: 20px 15px;
+    text-align: center;
+    font-size: 1rem;
+    color: var(--text-color);
+    border-top: 2px solid var(--accent-color);
+    width: 100%;
+    margin-top: auto;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    nav ul {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    h2 {
+        font-size: 1.8rem;
+    }
+}
+
+.dark-mode-toggle {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: var(--accent-color);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background 0.3s;
+}
+
+.dark-mode-toggle:hover {
+    background: var(--link-hover-color);
+}
