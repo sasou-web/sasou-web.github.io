@@ -23,35 +23,15 @@
     --bg-color: #f5f5f5;
     --header-bg: #ffffff;
     --text-color: #333333;
-    --accent-color: #a55977; /* Garde la même couleur d'accent pour la cohérence */
     --link-hover-color: #e0e0e0;
     --card-bg: #ffffff;
     --gradient-color: linear-gradient(90deg, #f0f0f0, #e0e0e0);
     --footer-bg: #ffffff;
 }
 
-/* Variables de couleurs pour le mode sombre */
-:root {
-    --bg-color: #1d161d;
-    --header-bg: #392951;
-    --text-color: #d6b8ce;
-    --accent-color: #a55977;
-    --link-hover-color: #533356;
-    --card-bg: #533356;
-    --gradient-color: linear-gradient(90deg, #a55977, #7d5380);
-    --footer-bg: #1d161d;
-}
-
-/* Variables de couleurs pour le mode clair */
-[data-theme="light"] {
-    --bg-color: #f5f5f5;
-    --header-bg: #ffffff;
-    --text-color: #333333;
-    --accent-color: #a55977; /* Garde la même couleur d'accent pour la cohérence */
-    --link-hover-color: #e0e0e0;
-    --card-bg: #ffffff;
-    --gradient-color: linear-gradient(90deg, #f0f0f0, #e0e0e0);
-    --footer-bg: #ffffff;
+/* Transition fluide pour les changements de couleur */
+body, header, footer, nav ul li a, .project-item, section {
+    transition: background-color 0.5s ease, color 0.5s ease, border-color 0.5s ease, box-shadow 0.5s ease;
 }
 
 /* Style global */
@@ -92,6 +72,7 @@ header {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
 }
 
+/* Navigation */
 nav ul {
     list-style: none;
     display: flex;
@@ -235,52 +216,18 @@ footer {
     }
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-    nav ul {
-        flex-direction: column;
-        gap: 15px;
-    }
-
-    h1 {
-        font-size: 2rem;
-    }
-
-    h2 {
-        font-size: 1.8rem;
-    }
-}
-
-.dark-mode-toggle {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background: var(--accent-color);
-    color: white;
-    border: none;
-    padding: 10px 15px;
-    font-size: 1rem;
-    cursor: pointer;
-    border-radius: 5px;
-    transition: background 0.3s;
-}
-
-.dark-mode-toggle:hover {
-    background: var(--link-hover-color);
-}
-
-/* --- Amélioration du responsive design --- */
+/* --- Responsive Design --- */
 @media (max-width: 768px) {
     /* Navigation en mode mobile */
     nav ul {
         flex-direction: column;
-        gap: 10px;
+        gap: 15px;
         align-items: center;
     }
 
     /* Ajustement des titres */
     h1 {
-        font-size: 2.2rem;
+        font-size: 2rem;
     }
 
     h2 {
@@ -325,7 +272,6 @@ footer {
     }
 }
 
-/* --- Responsive Design pour très petits écrans (max-width: 360px) --- */
 @media (max-width: 360px) {
     header {
         padding: 10px 0;
@@ -356,7 +302,7 @@ footer {
         font-size: 0.95rem;
     }
     
-    .dark-mode-toggle {
+    .theme-toggle {
         padding: 8px 10px;
         font-size: 0.9rem;
         bottom: 15px;
