@@ -35,7 +35,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 entry.target.classList.add("fadeInUp");
             }
         });
-    }, { threshold: 0.3 });
+    }, { threshold: 0.9 });
     
     sections.forEach(section => observer.observe(section));
     
