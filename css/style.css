@@ -6,7 +6,7 @@
     scroll-behavior: smooth;
 }
 
-/* Variables de couleurs */
+/* Variables de couleurs pour le mode sombre */
 :root {
     --bg-color: #1d161d;
     --header-bg: #392951;
@@ -16,6 +16,42 @@
     --card-bg: #533356;
     --gradient-color: linear-gradient(90deg, #a55977, #7d5380);
     --footer-bg: #1d161d;
+}
+
+/* Variables de couleurs pour le mode clair */
+[data-theme="light"] {
+    --bg-color: #f5f5f5;
+    --header-bg: #ffffff;
+    --text-color: #333333;
+    --accent-color: #a55977; /* Garde la même couleur d'accent pour la cohérence */
+    --link-hover-color: #e0e0e0;
+    --card-bg: #ffffff;
+    --gradient-color: linear-gradient(90deg, #f0f0f0, #e0e0e0);
+    --footer-bg: #ffffff;
+}
+
+/* Variables de couleurs pour le mode sombre */
+:root {
+    --bg-color: #1d161d;
+    --header-bg: #392951;
+    --text-color: #d6b8ce;
+    --accent-color: #a55977;
+    --link-hover-color: #533356;
+    --card-bg: #533356;
+    --gradient-color: linear-gradient(90deg, #a55977, #7d5380);
+    --footer-bg: #1d161d;
+}
+
+/* Variables de couleurs pour le mode clair */
+[data-theme="light"] {
+    --bg-color: #f5f5f5;
+    --header-bg: #ffffff;
+    --text-color: #333333;
+    --accent-color: #a55977; /* Garde la même couleur d'accent pour la cohérence */
+    --link-hover-color: #e0e0e0;
+    --card-bg: #ffffff;
+    --gradient-color: linear-gradient(90deg, #f0f0f0, #e0e0e0);
+    --footer-bg: #ffffff;
 }
 
 /* Style global */
@@ -155,6 +191,36 @@ footer {
     border-top: 2px solid var(--accent-color);
     width: 100%;
     margin-top: auto;
+}
+
+/* Bouton de bascule entre les modes */
+.theme-toggle {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: var(--accent-color);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.theme-toggle:hover {
+    background: var(--link-hover-color);
+    transform: scale(1.1);
+}
+
+.theme-toggle i {
+    font-size: 1.2rem;
 }
 
 /* Animations */

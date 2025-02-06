@@ -39,29 +39,28 @@ document.addEventListener("DOMContentLoaded", () => {
     
     sections.forEach(section => observer.observe(section));
     
-    // Mode nuit toggle
-    const toggleDarkMode = document.createElement("button");
-    toggleDarkMode.textContent = "Mode Nuit";
-    toggleDarkMode.classList.add("dark-mode-toggle");
-    document.body.appendChild(toggleDarkMode);
-    
-    toggleDarkMode.addEventListener("click", () => {
-        document.body.classList.toggle("dark-mode");
+    // Gestion du mode clair/sombre
+    const themeToggle = document.getElementById("theme-toggle");
+    const themeIcon = themeToggle.querySelector("i");
+
+    // Vérifier le mode sauvegardé dans localStorage
+    const savedTheme = localStorage.getItem("theme");
+    if (savedTheme === "light") {
+        document.documentElement.setAttribute("data-theme", "light");
+        themeIcon.classList.replace("fa-moon", "fa-sun");
+    }
+
+    // Basculer entre les modes
+    themeToggle.addEventListener("click", () => {
+        const isLightMode = document.documentElement.getAttribute("data-theme") === "light";
+        if (isLightMode) {
+            document.documentElement.setAttribute("data-theme", "dark");
+            themeIcon.classList.replace("fa-sun", "fa-moon");
+            localStorage.setItem("theme", "dark");
+        } else {
+            document.documentElement.setAttribute("data-theme", "light");
+            themeIcon.classList.replace("fa-moon", "fa-sun");
+            localStorage.setItem("theme", "light");
+        }
     });
-    
-    // Ajout du style pour le mode nuit
-    const darkModeStyle = document.createElement("style");
-    darkModeStyle.innerHTML = `
-        .dark-mode {
-            background: #121212;
-            color: #f5f5f5;
-        }
-        .dark-mode header, .dark-mode footer {
-            background: #222;
-        }
-        .dark-mode .project-item {
-            background: linear-gradient(90deg, #444, #666);
-        }
-    `;
-    document.head.appendChild(darkModeStyle);
 });
