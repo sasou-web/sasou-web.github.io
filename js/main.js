@@ -63,4 +63,21 @@ document.addEventListener("DOMContentLoaded", () => {
             localStorage.setItem("theme", "light");
         }
     });
+
+    // Logger les visites avec Firebase
+    const logData = {
+        url: window.location.href,
+        timestamp: new Date().toISOString(),
+        userAgent: navigator.userAgent,
+        referrer: document.referrer || "direct"
+    };
+
+    // Envoyer les données à Firestore
+    if (typeof db !== "undefined") { // Vérifie si Firebase est initialisé
+        db.collection("logs").add(logData)
+            .then(() => console.log("Log enregistré !"))
+            .catch(error => console.error("Erreur Firebase :", error));
+    } else {
+        console.error("Firebase n'est pas initialisé.");
+    }
 });
